@@ -1,0 +1,22 @@
+<span class="dbglabel">HOME VIEW</span>
+
+<span class="dbglabel">Dynamic</span>
+<div class="boxes" *ngIf="boxesDynamic">
+  <edi-box *ngFor="let boxDynamic of boxesDynamic" [box]="boxDynamic"></edi-box>
+</div>
+
+<hr>
+
+<span class="dbglabel">Rolling</span>
+<div class="boxes" *ngIf="boxesRolling">
+  <edi-box *ngFor="let boxRolling of boxesRolling" [box]="boxRolling"></edi-box>
+</div>
+
+
+<span class="dbglabel">Content</span>
+<div class="contents" *ngIf="contents">
+  <edi-content
+    *ngFor="let content of contents"
+    [content]="content"></edi-content>
+</div>
+

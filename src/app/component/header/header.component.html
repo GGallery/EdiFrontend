@@ -1,0 +1,39 @@
+<nav class="navbar navbar-skatcy bg-info">
+  <a class="navbar-brand">EdiAcademy</a>
+  <form class="form-inline">
+
+    <div class="input-group mb-3">
+
+      <div class="input-group-prepend">
+
+        <div id="category" class="input-group" >
+          <select class="custom-select" id="inputGroupSelect01" (change)="categorySelected($event)">
+            <option value="0" selected>Categoria...</option>
+            <option
+              value="{{option.id}}"
+              *ngFor="let option of categories">
+              {{option.titolo}}
+            </option>
+          </select>
+        </div>
+
+
+      </div>
+
+      <input
+        [(ngModel)]="textSearch"
+        type="text"
+        name="category"
+        class="form-control"
+        aria-label="search text"
+        placeholder="cerca un contenuto"
+      />
+
+      <div class="input-group-append">
+        <button class="btn bg-white btn-outline-secondary" type="button" (click)="doSearch()">cerca</button>
+      </div>
+
+    </div>
+
+  </form>
+</nav>
