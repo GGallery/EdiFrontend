@@ -18,7 +18,6 @@ export class DataService {
   }
 
   public getContents(parameters: any = {}):  Observable<any> {
-    const params = JSON.stringify(parameters);
     console.log(this.urlElenco);
     return this.http.post<any>(`${this.urlElenco}contents/`, parameters);
   }

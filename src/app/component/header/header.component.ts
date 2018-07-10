@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(params => {
         this.selectedCategory = params.c;
         this.textSearch = params.t;
-        console.log(params, 'urlParams');
+          console.log(params, 'urlParams');
       });
     this.getCategories();
   }

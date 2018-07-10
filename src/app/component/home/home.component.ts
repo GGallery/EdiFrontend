@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {NguCarousel, NguCarouselStore} from '@ngu/carousel';
 
 @Component({
   selector: 'edi-home',
@@ -11,10 +12,12 @@ export class HomeComponent implements OnInit {
 
   public boxesRolling: any;
   public boxesDynamic: any;
-  public contents: [any];
+  public contents: any;
 
   private selectedCategory: number = null;
   private textSearch: any;
+
+
 
   constructor(
     private dataService: DataService,
@@ -30,13 +33,19 @@ export class HomeComponent implements OnInit {
         console.log(params); // {order: "popular"}
         this.selectedCategory = params.c;
         this.textSearch = params.t;
-        console.log(params, 'urlParams');
+        console.log(params, 'urlParamsinHome');
+
+        this.contents = [];
+        this.boxesDynamic = [];
+        this.boxesRolling = [];
+
+        this.getBoxesRolling();
+        this.getBoxesDynamic();
+        this.getContents();
+
       });
 
 
-    this.getBoxesRolling();
-    this.getBoxesDynamic();
-    this.getContents();
   }
 
   // POSITION
@@ -77,7 +86,7 @@ export class HomeComponent implements OnInit {
 
 
   public getContents() {
-    this.dataService.getContents({selectedCategory: this.selectedCategory})
+    this.dataService.getContents({categoria: this.selectedCategory})
       .subscribe(
         (data) => {
           console.log(data, 'Contents');
