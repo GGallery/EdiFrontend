@@ -1,67 +1,25 @@
-<div class="card mb-3 p-3">
-  <h3 class="card-header">{{ box.titolo  }}</h3>
-  <div class="card-body">
+<div class="">
+  <div #box class="box">
 
-    <!--https://github.com/sheikalthaf/ngu-carousel-->
-    <ngu-carousel
-      [inputs]="carouselBanner">
+    <div *ngFor="let content of onlineContents" class="item">
+      {{content.titolo}}
+    </div>
 
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio1</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio2</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio3</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio4</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio5</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio6</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio7</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio4</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio5</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio6</div>
-      </ngu-item>
-
-      <ngu-item NguCarouselItem>
-        <div class="box_content">Contenuto di esempio7</div>
-      </ngu-item>
-
-      <button NguCarouselPrev class='leftRs'>&lt;</button>
-      <button NguCarouselNext class='rightRs'>&gt;</button>
-    </ngu-carousel>
-
-  </div>
-  <div class="card-footer text-muted">
-    <!--{{box.posizione | json}}-->
-    <!--{{box.tipologia | json}}-->
   </div>
 </div>
 
+<div *ngIf="onlineContents">
+  <ngb-pagination
+    [collectionSize]="contents?.length"
+    [(page)]="page"
+    [directionLinks]="false"
+    [pageSize]="limit"
+    (pageChange)="pagination($event)"
+    size="sm"
+    class="d-flex justify-content-end"
+  >
+  </ngb-pagination>
 
 
 
-
+</div>

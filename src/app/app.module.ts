@@ -16,7 +16,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './component/home/home.component';
 import {FormsModule} from '@angular/forms';
 import { ContentComponent } from './component/content/content.component';
-import {NguCarouselModule} from '@ngu/carousel';
 
 
 
@@ -39,7 +38,6 @@ import {NguCarouselModule} from '@ngu/carousel';
     MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
-    NguCarouselModule,
 
 
 

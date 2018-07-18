@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NguCarousel, NguCarouselStore} from '@ngu/carousel';
@@ -63,19 +63,20 @@ export class HomeComponent implements OnInit {
 
 
 
+
   public getBoxesRolling() {
-    this.dataService.getBoxes({tipologia: '1', posizione: '1', selectedCategory: this.selectedCategory})
-      .subscribe(
-        (data) => {
-          console.log(data, 'rollingBoxes');
-          this.boxesRolling = data.data;
-        }
-      );
+    // this.dataService.getBoxes({tipologia: '1', posizione: '1', selectedCategory: this.selectedCategory})
+    //   .subscribe(
+    //     (data) => {
+    //       console.log(data, 'rollingBoxes');
+    //       this.boxesRolling = data.data;
+    //     }
+    //   );
   }
 
 
   public getBoxesDynamic() {
-    this.dataService.getBoxes({tipologia: '2', posizione: '1', selectedCategory: this.selectedCategory})
+    this.dataService.getBoxes({tipologia: null, posizione: '1', selectedCategory: this.selectedCategory})
       .subscribe(
         (data) => {
           console.log(data, 'dynamicBoxes');

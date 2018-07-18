@@ -1,15 +1,24 @@
-.boxes{
-  //display: flex;
-  //flex-direction: row;
-  //justify-content: space-around;
-  //flex-wrap: wrap
+@import "~bootstrap/scss/bootstrap";
+
+.boxes {
+ // display: flex;
+ // flex-direction: row;
+ // justify-content: space-around;
+ //  flex-wrap: wrap;
+  //  width: 100vw;
+  // min-width: 200px;
+  // max-width: 300px;
+//overflow-wrap: normal;
+ // overflow: hidden;
+
 
 }
-;
+
 .contents{
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+
 }
 

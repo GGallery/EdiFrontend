@@ -27,7 +27,9 @@ export class DataService {
     return this.http.post<any>(`${this.urlElenco}boxes/`, parameters);
   }
 
-
+  public getBoxContents(parameters: any = {}):  Observable<any> {
+    return this.http.post<any>(`${this.urlElenco}box/`, parameters);
+  }
 
   public getCategories():  Observable<any> {
     return this.http.get(`${this.urlElenco}categories/`);
@@ -36,6 +38,9 @@ export class DataService {
   public getSubCategories(id: number = null):  Observable<any> {
     return this.http.get(`${this.urlElenco}subcategories/${id}`);
   }
+
+
+
 
 
   // public getImmobili(parameters: any = {}):  Observable<any> {
