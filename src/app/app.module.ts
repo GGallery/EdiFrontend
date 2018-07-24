@@ -16,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './component/home/home.component';
 import {FormsModule} from '@angular/forms';
 import { ContentComponent } from './component/content/content.component';
+import {ItemComponent} from './component/item/item.component';
 
 
 
@@ -27,7 +28,8 @@ import { ContentComponent } from './component/content/content.component';
     FooterComponent,
     BoxComponent,
     HomeComponent,
-    ContentComponent
+    ContentComponent,
+    ItemComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -38,9 +40,6 @@ import { ContentComponent } from './component/content/content.component';
     MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
-
-
-
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

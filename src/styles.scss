@@ -4,10 +4,15 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+@import "~@fortawesome/fontawesome-free/css/solid.css";
+@import "~@fortawesome/fontawesome-free/css/fontawesome.css";
+
+
 @import '/app/component/box/box.component';
 @import '/app/component/home/home.component.scss';
 @import '/app/component/header/header.component.scss';
 @import '/app/component/content/content.component.scss';
+@import '/app/component/item/item.component.scss';
 
 $screen-sm-min: 576px;
 

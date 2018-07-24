@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NguCarousel, NguCarouselStore} from '@ngu/carousel';
 
 @Component({
   selector: 'edi-home',

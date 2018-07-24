@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
-import {NguCarousel} from '@ngu/carousel';
 import {DataService} from '../../services/data.service';
 
 @Component({
@@ -10,7 +9,7 @@ import {DataService} from '../../services/data.service';
 export class BoxComponent implements OnInit, AfterViewInit  {
 
   @Input() box: any;
-  @ViewChild('box') elementView: ElementRef;
+  @ViewChild('box_ref') elementView: ElementRef;
   public contents: any;
   public onlineContents: any;
   public actualBoxSize: any;
@@ -18,14 +17,12 @@ export class BoxComponent implements OnInit, AfterViewInit  {
   public page = 1;
   public limit: number;
 
-  public carouselBanner: NguCarousel;
 
   constructor(
     private dataService: DataService
   ) { }
 
   ngOnInit() {
-    // this.carosello();
     this.getBoxContents();
   }
 
@@ -49,7 +46,8 @@ export class BoxComponent implements OnInit, AfterViewInit  {
     const start = Math.max(0, this.limit * (page - 1));
 
     this.onlineContents = this.contents.slice(start, start + this.limit);
-    this.pages = Math.floor(this.contents.length / this.limit);
+    this.pages = Math.ceil(this.contents.length / this.limit);
+    this.page = page;
     console.log(
       'size:' + this.actualBoxSize ,
       'limit:' + this.limit,
@@ -60,6 +58,21 @@ export class BoxComponent implements OnInit, AfterViewInit  {
     );
 
   }
+
+  public prev() {
+    console.log('prev' , this.page, this.pages);
+    if (this.page > 1) {
+      this.pagination(this.page - 1);
+    }
+  }
+
+  public next() {
+    console.log('next', this.page, this.pages);
+    if (this.page < this.pages) {
+      this.pagination(this.page + 1);
+    }
+  }
+
 
   public getBoxContents() {
     this.dataService.getBoxContents({box_id: this.box.id, category_id: null, content_id: null})

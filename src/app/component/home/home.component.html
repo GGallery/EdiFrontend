@@ -2,16 +2,14 @@
 
 <span class="dbglabel">Dynamic</span>
 
-<div class="containerdd">
-  <div class="boxes row" *ngIf="boxesDynamic">
+  <div class="boxes row px-4" *ngIf="boxesDynamic">
     <edi-box ngClass="{{boxDynamic.cssClass}}" *ngFor="let boxDynamic of boxesDynamic" [box]="boxDynamic"></edi-box>
   </div>
-</div>
 
 <hr>
 
 <span class="dbglabel">Rolling</span>
-<div class="boxes row" *ngIf="boxesRolling">
+<div class="boxes row px-4" *ngIf="boxesRolling">
   <edi-box ngClass="col-md-12" *ngFor="let boxRolling of boxesRolling" [box]="boxRolling"></edi-box>
 </div>
 

@@ -1,0 +1,21 @@
+.item {
+
+  padding: 3px;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 300px;
+  float: left;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.item-image{}
+
+.item-content{
+  background-color:#333333 ;
+  height: 100%;
+  padding: 1px;
+}

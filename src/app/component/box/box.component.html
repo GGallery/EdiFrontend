@@ -1,12 +1,26 @@
-<div class="">
-  <div #box class="box">
-
-    <div *ngFor="let content of onlineContents" class="item">
-      {{content.titolo}}
-    </div>
-
+{{box.titolo}}
+<div class="box_container">
+  <div #box_ref class="box">
+      <edi-item *ngFor="let content of onlineContents" class="item" [item]="content"></edi-item>
   </div>
+
+  <div
+    *ngIf="onlineContents"
+    class="leftarrow arrow rounded p-3 mb-2 bg-light text-dark"
+    (click)="prev()">
+    <i class="fas fa-angle-left fa-2x"></i>
+  </div>
+
+  <div
+    *ngIf="onlineContents"
+    class="rightarrow arrow rounded p-3 mb-2 bg-light text-dark"
+    (click)="next()">
+    <i class="fas fa-angle-right fa-2x"></i>
+  </div>
+
 </div>
+
+
 
 <div *ngIf="onlineContents">
   <ngb-pagination
@@ -19,7 +33,4 @@
     class="d-flex justify-content-end"
   >
   </ngb-pagination>
-
-
-
 </div>

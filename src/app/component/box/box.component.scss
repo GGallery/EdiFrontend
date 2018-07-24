@@ -1,44 +1,30 @@
- .box_content{
-
-  height: 100px;
-  width: 100px;
-  border: 1px solid grey;
-
+.box_container{
+  height: 300px;
 }
-
- .box:before {
-   content: "<";
-   min-height: 300px;
-   vertical-align: center;
-
- }
-
- .box:after{
-   content: ">";
-   min-height: 300px;
-   vertical-align: center;
- }
 
 .box{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
- // overflow-wrap: normal;
   overflow: hidden;
-
   border: 1px solid grey;
 
-
-
 }
 
-.item{
-  background-color:#333333 ;
-  padding: 3px;
-  min-width: 200px;
-  max-width: 200px;
-  min-height: 300px;
-  float: left;
-  display: block;
-  color: white;
+.arrow{
+  top: 110px;
+  width: 40px;
+  position: absolute;
+
+  &.leftarrow{
+    left: 5px
+  }
+
+  &.rightarrow{
+    right: 5px;
+  }
 }
+
+
+
+
