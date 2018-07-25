@@ -38,8 +38,8 @@ export class HomeComponent implements OnInit {
         this.boxesDynamic = [];
         this.boxesRolling = [];
 
-        this.getBoxesRolling();
         this.getBoxesDynamic();
+        this.getBoxesRolling();
         this.getContents();
 
       });
@@ -64,18 +64,18 @@ export class HomeComponent implements OnInit {
 
 
   public getBoxesRolling() {
-    // this.dataService.getBoxes({tipologia: '1', posizione: '1', selectedCategory: this.selectedCategory})
-    //   .subscribe(
-    //     (data) => {
-    //       console.log(data, 'rollingBoxes');
-    //       this.boxesRolling = data.data;
-    //     }
-    //   );
+    this.dataService.getBoxes({tipologia: '1', posizione: 2, selectedCategory: this.selectedCategory})
+      .subscribe(
+        (data) => {
+          console.log(data, 'rollingBoxes');
+          this.boxesRolling = data.data;
+        }
+      );
   }
 
 
   public getBoxesDynamic() {
-    this.dataService.getBoxes({tipologia: null, posizione: '1', selectedCategory: this.selectedCategory})
+    this.dataService.getBoxes({tipologia: null, posizione: 1, selectedCategory: this.selectedCategory})
       .subscribe(
         (data) => {
           console.log(data, 'dynamicBoxes');

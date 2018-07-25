@@ -1,7 +1,7 @@
 {{box.titolo}}
 <div class="box_container">
-  <div #box_ref class="box">
-      <edi-item *ngFor="let content of onlineContents" class="item" [item]="content"></edi-item>
+  <div #box_ref class="box py-2 px-4">
+      <edi-item *ngFor="let content of onlineContents"  [content_id]="content.id"></edi-item>
   </div>
 
   <div

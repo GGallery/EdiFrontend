@@ -48,26 +48,26 @@ export class BoxComponent implements OnInit, AfterViewInit  {
     this.onlineContents = this.contents.slice(start, start + this.limit);
     this.pages = Math.ceil(this.contents.length / this.limit);
     this.page = page;
-    console.log(
-      'size:' + this.actualBoxSize ,
-      'limit:' + this.limit,
-      'totpages:' + this.pages,
-      'actualpage:' + page,
-      'totcontent:' + this.contents.length,
-      'start' + start
-    );
+    // console.log(
+    //   'size:' + this.actualBoxSize ,
+    //   'limit:' + this.limit,
+    //   'totpages:' + this.pages,
+    //   'actualpage:' + page,
+    //   'totcontent:' + this.contents.length,
+    //   'start' + start
+    // );
 
   }
 
   public prev() {
-    console.log('prev' , this.page, this.pages);
+    // console.log('prev' , this.page, this.pages);
     if (this.page > 1) {
       this.pagination(this.page - 1);
     }
   }
 
   public next() {
-    console.log('next', this.page, this.pages);
+    // console.log('next', this.page, this.pages);
     if (this.page < this.pages) {
       this.pagination(this.page + 1);
     }
@@ -79,7 +79,7 @@ export class BoxComponent implements OnInit, AfterViewInit  {
       .subscribe(
         (data) => {
           this.contents = data.contents;
-          console.log(this.contents, 'BoxContents' + this.box.id);
+          // console.log(this.contents, 'BoxContents' + this.box.id);
           this.pagination();
         }
       );

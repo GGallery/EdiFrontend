@@ -22,6 +22,9 @@ export class DataService {
     return this.http.post<any>(`${this.urlElenco}contents/`, parameters);
   }
 
+  public getContent(id: number = null):  Observable<any> {
+    return this.http.get(`${this.urlElenco}content/${id}`);
+  }
 
   public getBoxes(parameters: any = {}):  Observable<any> {
     return this.http.post<any>(`${this.urlElenco}boxes/`, parameters);

@@ -1,6 +1,20 @@
-<div class="item-image">
-  <img width="100%" src="http://via.placeholder.com/200x150">
+<div
+  class="item loading p-2"
+  *ngIf="!content"
+>
+  loading....
 </div>
-<div class="item-content">
-  {{item.titolo}}
+
+
+<div
+  class="item"
+  *ngIf="content"
+>
+  <div class="item-image">
+    <img width="100%" src="http://via.placeholder.com/200x150">
+  </div>
+  <div class="item-content">
+    {{content.titolo}}
+  </div>
 </div>
+

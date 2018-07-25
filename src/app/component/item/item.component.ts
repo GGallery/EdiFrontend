@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'edi-item',
@@ -7,11 +8,25 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  @Input() item: any;
+  @Input() content_id: number;
+  public content: any;
 
-  constructor() { }
+  constructor(
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
+    this.getContent();
+  }
+
+  public getContent() {
+    this.dataService.getContent(this.content_id)
+      .subscribe(
+        (data) => {
+          this.content = data;
+          console.log(this.content, 'Contents' + this.content);
+        }
+      );
   }
 
 }
