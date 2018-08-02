@@ -10,23 +10,32 @@ export class ItemComponent implements OnInit {
 
   @Input() content_id: number;
   public content: any;
+  public hidden = false;
 
   constructor(
     private dataService: DataService
   ) { }
 
   ngOnInit() {
-    this.getContent();
+    if (!this.content_id) {
+      this.hidden = true;
+    } else {
+      this.getContent();
+    }
   }
 
   public getContent() {
-    this.dataService.getContent(this.content_id)
-      .subscribe(
-        (data) => {
-          this.content = data;
-          console.log(this.content, 'Contents' + this.content);
-        }
-      );
+    if (this.dataService.content[this.content_id]) {
+      this.content = this.dataService.content[this.content_id];
+    } else {
+      this.dataService.getContent(this.content_id)
+        .subscribe(
+          (data) => {
+            this.content = data;
+            this.dataService.content[this.content_id] = data;
+          }
+        );
+    }
   }
 
 }

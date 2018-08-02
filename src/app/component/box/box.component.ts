@@ -10,12 +10,13 @@ export class BoxComponent implements OnInit, AfterViewInit  {
 
   @Input() box: any;
   @ViewChild('box_ref') elementView: ElementRef;
-  public contents: any;
-  public onlineContents: any;
+  public contents: any = [];
+  public onlineContents: any = [];
   public actualBoxSize: any;
   public pages: number;
   public page = 1;
   public limit: number;
+  public hidden = false;
 
 
   constructor(
@@ -30,6 +31,10 @@ export class BoxComponent implements OnInit, AfterViewInit  {
   ngAfterViewInit() {
     this.actualBoxSize = this.elementView.nativeElement.offsetWidth;
     // console.log(this.box.id, this.elementView.nativeElement.offsetWidth);
+    setInterval(
+      () => {
+        this.next();
+      }, 20000);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -41,36 +46,38 @@ export class BoxComponent implements OnInit, AfterViewInit  {
 
 
   public pagination(page: number = 0) {
-    this.limit = Math.floor(this.actualBoxSize / 200);
+    if (this.contents.length > 0) {
+      this.limit = Math.floor(this.actualBoxSize / 180);
 
-    const start = Math.max(0, this.limit * (page - 1));
+      const start = Math.max(0, this.limit * (page - 1));
 
-    this.onlineContents = this.contents.slice(start, start + this.limit);
-    this.pages = Math.ceil(this.contents.length / this.limit);
-    this.page = page;
-    // console.log(
-    //   'size:' + this.actualBoxSize ,
-    //   'limit:' + this.limit,
-    //   'totpages:' + this.pages,
-    //   'actualpage:' + page,
-    //   'totcontent:' + this.contents.length,
-    //   'start' + start
-    // );
+      this.onlineContents = this.contents.slice(start, start + this.limit);
+      this.pages = Math.ceil(this.contents.length / this.limit);
+      this.page = page;
+      // console.log(
+      //   'size:' + this.actualBoxSize,
+      //   'limit:' + this.limit,
+      //   'totpages:' + this.pages,
+      //   'actualpage:' + page,
+      //   'totcontent:' + this.contents.length,
+      //   'start' + start
+      // );
+    }
 
   }
 
   public prev() {
-    // console.log('prev' , this.page, this.pages);
     if (this.page > 1) {
       this.pagination(this.page - 1);
     }
   }
 
   public next() {
-    // console.log('next', this.page, this.pages);
-    if (this.page < this.pages) {
-      this.pagination(this.page + 1);
+    if ((this.page === this.pages && this.pages > 1)) {
+      this.page = 1;
     }
+
+    this.pagination(this.page + 1);
   }
 
 
@@ -79,10 +86,18 @@ export class BoxComponent implements OnInit, AfterViewInit  {
       .subscribe(
         (data) => {
           this.contents = data.contents;
-          // console.log(this.contents, 'BoxContents' + this.box.id);
-          this.pagination();
+          if (this.contents.length > 0) {
+            this.pagination();
+          } else {
+            this.hidden = true;
+          }
         }
       );
   }
+
+
+
+
+
 
 }

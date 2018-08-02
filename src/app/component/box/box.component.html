@@ -1,36 +1,38 @@
-{{box.titolo}}
-<div class="box_container">
-  <div #box_ref class="box py-2 px-4">
+<div #box_ref [hidden]="hidden">
+  <div class="box_container" *ngIf="contents.length > 0">
+    {{box.titolo}}
+    <div class="box py-2 px-4">
       <edi-item *ngFor="let content of onlineContents"  [content_id]="content.id"></edi-item>
+    </div>
+
+    <div
+      *ngIf="onlineContents"
+      class="leftarrow arrow rounded p-3 mb-2 bg-light text-dark"
+      (click)="prev()">
+      <i class="fas fa-angle-left fa-2x"></i>
+    </div>
+
+    <div
+      *ngIf="onlineContents"
+      class="rightarrow arrow rounded p-3 mb-2 bg-light text-dark"
+      (click)="next()">
+      <i class="fas fa-angle-right fa-2x"></i>
+    </div>
+
   </div>
 
-  <div
-    *ngIf="onlineContents"
-    class="leftarrow arrow rounded p-3 mb-2 bg-light text-dark"
-    (click)="prev()">
-    <i class="fas fa-angle-left fa-2x"></i>
+
+
+  <div *ngIf="onlineContents">
+    <ngb-pagination
+      [collectionSize]="contents?.length"
+      [(page)]="page"
+      [directionLinks]="false"
+      [pageSize]="limit"
+      (pageChange)="pagination($event)"
+      size="sm"
+      class="d-flex justify-content-end"
+    >
+    </ngb-pagination>
   </div>
-
-  <div
-    *ngIf="onlineContents"
-    class="rightarrow arrow rounded p-3 mb-2 bg-light text-dark"
-    (click)="next()">
-    <i class="fas fa-angle-right fa-2x"></i>
-  </div>
-
-</div>
-
-
-
-<div *ngIf="onlineContents">
-  <ngb-pagination
-    [collectionSize]="contents?.length"
-    [(page)]="page"
-    [directionLinks]="false"
-    [pageSize]="limit"
-    (pageChange)="pagination($event)"
-    size="sm"
-    class="d-flex justify-content-end"
-  >
-  </ngb-pagination>
 </div>

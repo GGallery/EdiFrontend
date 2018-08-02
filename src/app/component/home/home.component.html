@@ -1,21 +1,39 @@
 <span class="dbglabel">HOME VIEW</span>
 
-<span class="dbglabel">Dynamic</span>
+<div *ngIf="page == 1">
+  <span class="dbglabel">Rolling</span>
+  <div class="boxes row px-4" *ngIf="boxesRolling">
+    <edi-box ngClass="{{boxRolling.cssClass}}"
+             *ngFor="let boxRolling of boxesRolling" [box]="boxRolling"></edi-box>
+  </div>
 
+  <hr>
+
+  <span class="dbglabel">Dynamic</span>
   <div class="boxes row px-4" *ngIf="boxesDynamic">
     <edi-box ngClass="{{boxDynamic.cssClass}}" *ngFor="let boxDynamic of boxesDynamic" [box]="boxDynamic"></edi-box>
   </div>
-
-<hr>
-
-<span class="dbglabel">Rolling</span>
-<div class="boxes row px-4" *ngIf="boxesRolling">
-  <edi-box ngClass="col-md-12" *ngFor="let boxRolling of boxesRolling" [box]="boxRolling"></edi-box>
 </div>
 
 
 <span class="dbglabel">Content</span>
-<div class="contents" *ngIf="contents">
-  <edi-content *ngFor="let content of contents" [content]="content"></edi-content>
+<div #box_content_ref class="row contents mx-5">
+  <edi-item *ngFor="let content of onlineContents"  [content_id]="content.id"></edi-item>
 </div>
+
+<div *ngIf="contents">
+  <ngb-pagination
+    [collectionSize]="contents?.length"
+    [(page)]="page"
+    [maxSize]="5"
+    [boundaryLinks]="true"
+    [directionLinks]="false"
+    [pageSize]="limit"
+    (pageChange)="pagination($event)"
+    size="sm"
+    class="d-flex justify-content-center"
+  >
+  </ngb-pagination>
+</div>
+
 

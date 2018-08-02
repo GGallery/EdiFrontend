@@ -10,6 +10,7 @@ import {environment} from '../../environments/environment';
 export class DataService {
 
   private urlElenco = environment.apiurl;
+  public content: any[] = [];
 
   constructor(
     private http: HttpClient
