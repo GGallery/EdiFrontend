@@ -2,7 +2,7 @@
   <div class="box_container" *ngIf="contents.length > 0">
     {{box.titolo}}
     <div class="box py-2 px-4">
-      <edi-item *ngFor="let content of onlineContents"  [content_id]="content.id"></edi-item>
+      <edi-item *ngFor="let content of onlineContents"  [content]="content"></edi-item>
     </div>
 
     <div

@@ -12,21 +12,21 @@ export class HomeComponent implements OnInit, AfterViewInit  {
 
   public boxesRolling: any = [];
   public boxesDynamic: any = [];
-  public contents: any;
-  public onlineContents: any = [];
+
 
   @ViewChild('box_content_ref') elementView: ElementRef;
   public actualBoxSize: any;
 
+
+  public contents: any = [];
   public pages: number;
   public page = 1;
-  public limit = 15 ;
+  public limit = 30;
+  public totContents = 0;
 
 
   private selectedCategory: number = null;
   private textSearch: any;
-
-
 
   constructor(
     private dataService: DataService,
@@ -44,10 +44,9 @@ export class HomeComponent implements OnInit, AfterViewInit  {
         this.textSearch = params.t;
         console.log(params, 'urlParamsinHome');
 
-        this.getBoxesDynamic();
         this.getBoxesRolling();
+        this.getBoxesDynamic();
         this.getContents();
-
       });
 
 
@@ -88,47 +87,58 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   }
 
   public getContents() {
-    this.dataService.getContents({categoria: this.selectedCategory})
+    this.dataService.getContents({
+      categoria: this.selectedCategory,
+      offset: Math.max(0, this.limit * (this.page - 1)),
+      limit: this.limit
+    })
       .subscribe(
         (data) => {
           console.log(data, 'Contents');
+          this.totContents = data.count;
           this.contents = data.data;
-          this.pagination();
+          // this.pagination();
         }
       );
   }
 
   public pagination(page: number = 0) {
-    if (this.contents.length > 0) {
-      const start = Math.max(0, this.limit * (page - 1));
-      this.onlineContents = this.contents.slice(start, start + this.limit);
+    console.log(this.contents.length, 'lenght');
+    this.contents = [];
+    this.page = page;
 
-      // Algoritmo TAPPABUCHI
-      // conto gli item per riga.
-      const itemsRows = Math.floor(this.actualBoxSize / 180);
-      // numero di righe
-      const nRow = Math.ceil(this.onlineContents.length / itemsRows);
-      // elementi mancanti
-      const resto = nRow * itemsRows - this.onlineContents.length;
+    this.getContents();
 
-      for (let i = 0; i < resto; i++) {
-        this.onlineContents = [... this.onlineContents, {}];
-      }
+    //  if (this.contents.length > 0) {
+    //    const start = Math.max(0, this.limit * (page - 1));
 
-      this.pages = Math.ceil(this.contents.length / this.limit);
-      this.page = page;
-      // console.log(
-      //   'itemsRows' + itemsRows,
-      //   'nRow' + nRow,
-      //   'resto' + resto,
-      //   'size:' + this.actualBoxSize,
-      //   'limit:' + this.limit,
-      //   'totpages:' + this.pages,
-      //   'actualpage:' + page,
-      //   'totcontent:' + this.contents.length,
-      //   'start' + start
-      // );
-    }
+    // Algoritmo TAPPABUCHI
+    // conto gli item per riga.
+//      const itemsRows = Math.floor(this.actualBoxSize / 180);
+    // numero di righe
+    //    const nRow = Math.ceil(this.onlineContents.length / itemsRows);
+    // elementi mancanti
+    //  const resto = nRow * itemsRows - this.onlineContents.length;
+
+    //  for (let i = 0; i < resto; i++) {
+    //    this.onlineContents = [... this.onlineContents, {}];
+    //  }
+
+    //    this.pages = Math.ceil(this.contents.length / this.limit);
+
+
+    // console.log(
+    //   'itemsRows' + itemsRows,
+    //   'nRow' + nRow,
+    //   'resto' + resto,
+    //   'size:' + this.actualBoxSize,
+    //   'limit:' + this.limit,
+    //   'totpages:' + this.pages,
+    //   'actualpage:' + page,
+    //   'totcontent:' + this.contents.length,
+    //   'start' + start
+    // );
+    //}
 
   }
 
@@ -139,7 +149,7 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.actualBoxSize = this.elementView.nativeElement.offsetWidth;
-    this.pagination();
+    // this.pagination();
   }
 
 }

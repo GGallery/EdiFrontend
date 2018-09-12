@@ -86,6 +86,7 @@ export class BoxComponent implements OnInit, AfterViewInit  {
       .subscribe(
         (data) => {
           this.contents = data.contents;
+          console.log(data, 'logBox' + this.box.id);
           if (this.contents.length > 0) {
             this.pagination();
           } else {

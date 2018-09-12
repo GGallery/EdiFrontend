@@ -18,12 +18,12 @@
 
 <span class="dbglabel">Content</span>
 <div #box_content_ref class="row contents mx-5">
-  <edi-item *ngFor="let content of onlineContents"  [content_id]="content.id"></edi-item>
+  <edi-item *ngFor="let content of contents"  [content]="content"></edi-item>
 </div>
 
 <div *ngIf="contents">
   <ngb-pagination
-    [collectionSize]="contents?.length"
+    [collectionSize]="totContents"
     [(page)]="page"
     [maxSize]="5"
     [boundaryLinks]="true"

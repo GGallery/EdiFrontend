@@ -8,8 +8,8 @@ import {DataService} from '../../services/data.service';
 })
 export class ItemComponent implements OnInit {
 
-  @Input() content_id: number;
-  public content: any;
+  @Input() content: any;
+  // public content: any;
   public hidden = false;
 
   constructor(
@@ -17,25 +17,25 @@ export class ItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (!this.content_id) {
-      this.hidden = true;
-    } else {
-      this.getContent();
-    }
+    // if (!this.content_id) {
+    //   this.hidden = true;
+    // } else {
+    //   this.getContent();
+    // }
   }
 
-  public getContent() {
-    if (this.dataService.content[this.content_id]) {
-      this.content = this.dataService.content[this.content_id];
-    } else {
-      this.dataService.getContent(this.content_id)
-        .subscribe(
-          (data) => {
-            this.content = data;
-            this.dataService.content[this.content_id] = data;
-          }
-        );
-    }
-  }
+  // public getContent() {
+  //   if (this.dataService.content[this.content_id]) {
+  //     this.content = this.dataService.content[this.content_id];
+  //   } else {
+  //     this.dataService.getContent(this.content_id)
+  //       .subscribe(
+  //         (data) => {
+  //           this.content = data;
+  //           this.dataService.content[this.content_id] = data;
+  //         }
+  //       );
+  //   }
+  // }
 
 }
