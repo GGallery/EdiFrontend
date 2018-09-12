@@ -1,9 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -14,13 +13,10 @@ export class DataService {
 
   constructor(
     private http: HttpClient
-  ) {
-    // console.log('#', env.paths.service);
-  }
+  ) {}
 
   public getContents(parameters: any = {}):  Observable<any> {
-    console.log(this.urlElenco);
-    return this.http.post<any>(`${this.urlElenco}contents/`, parameters);
+    return this.http.post<any>(`${this.urlElenco}contents`, parameters);
   }
 
   public getContent(id: number = null):  Observable<any> {
@@ -28,15 +24,15 @@ export class DataService {
   }
 
   public getBoxes(parameters: any = {}):  Observable<any> {
-    return this.http.post<any>(`${this.urlElenco}boxes/`, parameters);
+    return this.http.post<any>(`${this.urlElenco}boxes`, parameters);
   }
 
   public getBoxContents(parameters: any = {}):  Observable<any> {
-    return this.http.post<any>(`${this.urlElenco}box/`, parameters);
+    return this.http.post<any>(`${this.urlElenco}box`, parameters);
   }
 
   public getCategories():  Observable<any> {
-    return this.http.get(`${this.urlElenco}categories/`);
+    return this.http.get(`${this.urlElenco}categories`);
   }
 
   public getSubCategories(id: number = null):  Observable<any> {

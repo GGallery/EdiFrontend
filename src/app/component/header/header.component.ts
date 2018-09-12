@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
         this.textSearch = params.t;
           console.log(params, 'urlParams');
       });
-    this.getCategories();
+    // this.getCategories();
   }
 
   public categorySelected (event: any) {
