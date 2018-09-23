@@ -1,20 +1,27 @@
 .item {
-  width: 180px;
-  min-height: 300px;
+  width: 230px;
+  min-height: 290px;
   float: left;
   color: white;
   display: flex;
   flex-direction: column;
+  padding: 5px;
 }
 .item-image{}
 
 .item-content{
   background-color:#333333 ;
-  height: 156px;
-  padding: 1px;
+  height: 120px;
+  padding: 2px;
+  font-size: 1em;
 }
 
 
 .loading{
   color: grey;
 }
+
+mat-card{
+  padding: 0;
+}
+

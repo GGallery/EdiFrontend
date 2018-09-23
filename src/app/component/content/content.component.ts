@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'edi-content',
@@ -7,11 +9,27 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  @Input() content: any;
+  public content: any;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {
+    this.route.params.subscribe(params => {
+      const content_id = params['id'];
+
+      this.dataService.getContent(content_id)
+        .subscribe(
+          (data) => {
+            this.content = data;
+          }
+        );
+    });
+  }
 
   ngOnInit() {
   }
+
+
 
 }

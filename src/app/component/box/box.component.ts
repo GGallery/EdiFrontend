@@ -47,7 +47,7 @@ export class BoxComponent implements OnInit, AfterViewInit  {
 
   public pagination(page: number = 0) {
     if (this.contents.length > 0) {
-      this.limit = Math.floor(this.actualBoxSize / 180);
+      this.limit = Math.floor(this.actualBoxSize / 230);
 
       const start = Math.max(0, this.limit * (page - 1));
 

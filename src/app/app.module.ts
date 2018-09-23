@@ -17,6 +17,7 @@ import { HomeComponent } from './component/home/home.component';
 import {FormsModule} from '@angular/forms';
 import { ContentComponent } from './component/content/content.component';
 import {ItemComponent} from './component/item/item.component';
+import { RatingComponent } from './component/rating/rating.component';
 
 
 
@@ -29,7 +30,8 @@ import {ItemComponent} from './component/item/item.component';
     BoxComponent,
     HomeComponent,
     ContentComponent,
-    ItemComponent
+    ItemComponent,
+    RatingComponent
   ],
   imports: [
     NgbModule.forRoot(),

@@ -1,0 +1,37 @@
+<div class="rating" [ngSwitch]="layout">
+
+  <!--LAYOUT BARRA LATERALE SCHERMATA CONTENUTO -->
+  <div class="rating--sidebar" *ngSwitchCase="'sidebar'">
+    <ngb-rating
+      [(rate)]="currentRate"
+      [readonly]="true" max="5"
+    >
+    </ngb-rating>
+
+    <pre>Rate: <b>{{currentRate}}</b></pre>
+  </div>
+
+
+  <!--LAYOUT BARRA SUPERIORE SCHERMATA CONTENUTO -->
+  <div class="rating--topbar" *ngSwitchCase="'topbar'">
+    <ngb-rating
+      [(rate)]="currentRate"
+      [readonly]="true" max="5"
+      [ngClass]="starClass"
+    >
+    </ngb-rating>
+  </div>
+
+  <!--LAYOUT INTERNO ITEM CARD -->
+  <div class="rating--topbar" *ngSwitchCase="'item'">
+    <ngb-rating
+      [(rate)]="currentRate"
+      [readonly]="true" max="5"
+      [ngClass]="starClass"
+    >
+    </ngb-rating>
+  </div>
+
+
+
+</div>

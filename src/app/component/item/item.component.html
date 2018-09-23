@@ -1,13 +1,16 @@
-<div class="item">
-  <div [hidden]="hidden">
-    <div class="loading p-2" *ngIf="!content">loading.... </div>
-    <div *ngIf="content">
-      <div class="item-image">
-        <img width="100%" src="https://via.placeholder.com/200x150">
+<a href="/content/{{ content.id }}">
+  <div class="item">
+    <mat-card [hidden]="hidden">
+      <div class="loading p-2" *ngIf="!content">loading.... </div>
+      <div *ngIf="content">
+        <div class="item-image">
+          <img width="100%" src="https://via.placeholder.com/200x150">
+        </div>
+        <div class="item-content">
+          {{content.titolo}}
+          <edi-rating [layout]="'item'" [currentRate]="content.ratingAvg"></edi-rating>
+        </div>
       </div>
-      <div class="item-content">
-        {{content.titolo}}
-      </div>
-    </div>
+    </mat-card>
   </div>
-</div>
+</a>

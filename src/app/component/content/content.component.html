@@ -1,4 +1,78 @@
-<div class="content">
-  <b>{{content.titolo}}</b>
+<div *ngIf="content" class="container">
+  <div class="bar">
+    <div class="bar--title">
+      {{ content._categoria.titolo }}
+    </div>
+    <div class="bar--novita">
+      <edi-rating [layout] = "'topbar'"></edi-rating>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="main">
+
+      <div class="main--header">
+        <div class="main--header--logo">
+          <img src="https://via.placeholder.com/150x150">
+        </div>
+
+        <div class="main--header--intestazione">
+          <h1>{{ content.titolo }}</h1>
+          <span [innerHTML] = "content.descrizione"></span>
+          <span class="main--header--intestazione--info">
+            Ultimo aggiornamento: {{ content.dataultimarev }}
+
+          </span>
+        </div>
+      </div>
+
+      <div class="main--body">
+        <span [innerHTML] = "content.abstract"></span>
+      </div>
+
+
+    </div>
+    <div class="sidebar">
+
+      <div class="sidebar--top">
+        <div class="sidebar--top--prodotti">
+          <img class="sidebar--top--prodotti--item" src="https://via.placeholder.com/40x40">
+          <img class="sidebar--top--prodotti--item" src="https://via.placeholder.com/40x40">
+          <img class="sidebar--top--prodotti--item" src="https://via.placeholder.com/40x40">
+        </div>
+
+        <div>punti: {{ content.score }}</div>
+
+        <div class="">
+          <img class="" src="https://via.placeholder.com/40x40">
+        </div>
+      </div>
+
+      <div class="sidebar--allegati">
+        Allegati
+        <div class="sidebar--allegati--item">
+          <img class="" src="https://via.placeholder.com/40x40">
+          TEXT TEXT
+        </div>
+
+        <div class="sidebar--allegati--item">
+          <img class="" src="https://via.placeholder.com/40x40">
+          TEXT TEXT
+        </div>
+
+        <div class="sidebar--allegati--item">
+          <img class="" src="https://via.placeholder.com/40x40">
+          TEXT TEXT
+        </div>
+
+      </div>
+
+      <div class="sidebar--rating">
+        <edi-rating [layout] = "'sidebar'"></edi-rating>
+      </div>
+
+    </div>
+  </div>
 </div>
+
 
